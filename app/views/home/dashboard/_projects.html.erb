@@ -2,23 +2,19 @@
   <h3>Your Saved Projects</h3>
   <% if @favorite_projects.present? %>
     <ul class="no-bullet">
-      <table class='table'>
-        
-      <% @favorite_projects.each do |project| %>
-        <tr>
-        <td>
-        <li><%= link_to project.name, project_path(project) %></li>
-        </td>
-        <td>
-        <%= link_to 'Remove', favorite_path(id: project.id), method: :delete, data: { confirm: 'Are you sure?'}, class: 'favorite radius button'  %>
-        </td>
-        </tr>
-      <% end %>
-      </table>
+      <div class="row project">
+        <div class="project_technologies large-3 columns"> 
+          <% @favorite_projects.each do |project| %>
+          <li><%= link_to project.name, project_path(project) %></li>
+        </div>
+        <div class="project_technologies large-3 columns">
+          <%= link_to 'Remove', favorite_path(id: project.id), method: :delete, data: { confirm: 'Are you sure?'}, class: 'favorite radius button'  %>
+          <% end %>
+        </div>
+      </div>
     </ul>
     <p>Looking for something else? Browse more <%= link_to "projects to change the world", projects_path %>.</p>
   <% else %>
     <p>No favorites yet? We'd recommend <%=  %>. Or, browse more <%= link_to "projects to change the world", projects_path %>.</p>
-
   <% end %>  
 </div>
