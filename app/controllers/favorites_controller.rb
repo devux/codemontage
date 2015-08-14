@@ -1,5 +1,4 @@
 class FavoritesController < ApplicationController
-  
   def create
     fp = FavoriteProject.new
     fp.user = current_user
@@ -11,8 +10,8 @@ class FavoritesController < ApplicationController
   
   def destroy
     @favorite_project = FavoriteProject.where(project_id: params[:id],
-                                              user_id: current_user.id)
-                                       .first
+                                              user_id: current_user.id).
+                                        first
     @favorite_project.destroy
     redirect_to dashboard_path
   end
